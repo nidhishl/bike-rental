@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container" style="padding: 17%; padding-top: 5%;">
+  {% include '_message.html' %}
+  {% from "_formhelpers.html" import render_field %}
+  <h2 class="text-center">Create An Account</h2>  
+  <form method="POST", enctype="multipart/form-data">
+    <div >
+      {{ render_field(form.name, class = "form-control") }}
+      {{ render_field(form.licenseNo, class = "form-control") }}
+      {{ render_field(form.phno, class = "form-control") }}
+      {{ render_field(form.username, class = "form-control") }}
+      {{ render_field(form.email, class = "form-control") }}
+      {{ render_field(form.password, class = "form-control") }}
+      {{ render_field(form.confirm, class = "form-control") }}
+      {{ render_field(form.accept_tos) }}        
+      <input type="file" name="Photo">
+    </div>
+    
+    <p><input type=submit value="Register" class="btn btn-info mt-2"></p>
+  </form> 
+</div>
+
+{% endblock content %}
