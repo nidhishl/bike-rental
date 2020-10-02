@@ -1,4 +1,88 @@
 {% extends 'layout.html' %}
+
 {% block content %}
-    <h1>{{x.name}}</h1>
+<!-- nav bar -->
+<div class="containers mx-0" style="font-size: medium; padding: 0px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-screen">
+      <a class="nav-link" href="/" style="color: white;">Rental Bikes</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Account <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          {% if not session.get("phno") %}
+            <li class="nav-item">
+              <a class="nav-link ml-auto" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Sign-Up</a>
+            </li> 
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Log Out</a>
+            </li> 
+          {% endif %}
+          
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li> -->
+        </ul>
+          {% if not session.get("phno") %}
+          <span class="navbar-text">
+            Rent Superbikes at affortable Price
+          </span>
+          {% else %}
+          <span class="navbar-text">
+            {{x.username}}
+          </span>
+          {% endif %}
+        <!-- <span class="navbar-text">
+          Rent Superbikes at affortable Price
+        </span> -->
+      </div>
+    </nav>
+</div>
+  
+
+<div class="container-fluid">
+    <h1 class="p-4">Review your booking and checkout</h1>
+    <div class="row">
+    <div class="col-md-3">
+        <div class="text-center pt-3">
+            <h3 class="font-weight-bold">Your Details</h3>
+            <div class="p-3">
+                <h4 class="pt-2 p-1">Name:  {{ x.name }}</h4>
+                <h4 class="p-1">Phone Number:  {{ x.phno }}</h4>
+                <h4 class="p-1">Email ID:  {{ x.email }}</h4>
+                <h4 class="p-1">License Number:  {{  x.licenseNo }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <img class="card-img-top" src = "{{ url_for('static', filename='images/' + z.image) }}" alt="{{z.model}}" alt="Card image cap">
+    </div>
+    <div class="col-md-3">
+        <div class="text-center pt-3">
+            <div class="text-center pt-3">
+                <h3 class="font-weight-bold">Order Details</h3>
+                <div class="p-3">
+                    <h4 class="pt-2 p-1">{{z.company}} {{z.model}}</h4>
+                    <h4 class="p-1">Model number: {{z.modelno}}</h4>
+                    <h4 class="p-1">From: {{m}}</h4>
+                    <h4 class="p-1">To: {{n}}</h4>
+                    <h4 class="p-1">Price: {{b.fee*p}}</h4>
+                </div>
+                <button type="button" class="btn btn-outline-dark">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
 {% endblock content %}

@@ -53,3 +53,4 @@ def addmodel():
 
         flash(f'Data is successfully added to the database', 'success')        
     return render_template('products/addmodel.html', title = 'Add model', form = form)
+
